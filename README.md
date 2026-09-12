@@ -2,6 +2,9 @@
 
 A continuous, video-native group travel planning mobile application that bridges inspiration and execution by connecting vertical video discovery directly with contextual AI booking, group communication, and a secure document & expense ledger.
 
+> 📊 **Presentation & App Design Slides**: [View on Canva (Travel Planner by Gamabunta)](https://canva.link/nc0i7mg6tdrd6wd)  
+> Interactive presentation deck detailing the project explanation, problem breakdown, feature walkthroughs, and UI/UX app design examples.
+
 ---
 
 ## 2. Ideation & Process
