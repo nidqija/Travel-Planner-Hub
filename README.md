@@ -1,4 +1,4 @@
-# Travel Planner Hub (CodeNexion 2026 Preliminary Round Project)
+# Travel Planner Hub (CodeNection 2026 Preliminary Round Project)
 
 A continuous, video-native group travel planning mobile application that bridges inspiration and execution by connecting vertical video discovery directly with contextual AI booking, group communication, and a secure document & expense ledger.
 
