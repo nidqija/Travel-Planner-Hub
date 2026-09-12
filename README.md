@@ -1,4 +1,4 @@
-# Travel Planner Hub (cn26app)
+# Travel Planner Hub (CodeNexion 2026 Preliminary Round Project)
 
 A continuous, video-native group travel planning mobile application that bridges inspiration and execution by connecting vertical video discovery directly with contextual AI booking, group communication, and a secure document & expense ledger.
 
@@ -13,8 +13,10 @@ A continuous, video-native group travel planning mobile application that bridges
 | **Travel FYP Discovery Feed (Chosen)** | **Kept.** Replaces static search bars with engaging vertical video discovery, allowing users to scroll and explore travel destinations naturally. |
 | **Contextual AI Booking Assistant (Chosen)** | **Kept.** Solves discovery friction by instantly extracting travel time, arrival estimates, and booking options directly from social videos. |
 | **Unified Document & Expense Ledger (Chosen)** | **Kept.** Eliminates security risks and group fights by integrating secure passport verification and automated bill splitting into one workflow. |
-| **Group Chat (Chosen)** | **Kept.** Keeps group discussions directly tied to specific video booking cards, eliminating the need to jump back and forth to external messaging apps. |
+| **Group Chat (Chosen)** | **Kept.** Keeps group discussions directly tied to specific video booking cards with multiple features added such as trip ledger and voting polls to avoid the feature act like a standard social media application. |
 | **Budget Sync (Chosen)** | **Kept.** Features a live budget header in the lobby displaying target budget, total nights, and remaining money with AI synthesis recommendations. |
+| **Community Hub (Chosen)** | **Kept.** For user to discover and communicate with travelling community and gather knowledge and guidance. |
+| **AI Ideation (Chosen)** | **Kept.** User can alter the algorithm to find travel place catered more to their likings. |
 
 ### 2.2 Ideation Boards
 
@@ -62,7 +64,7 @@ graph BT
 </details>
 
 #### 2.2.2 User Flow Diagram
-This diagram maps the user's journey from vertical video discovery in the FYP lobby through AI contextual booking, secure document verification, and group expense management.
+This diagram maps the user's journey from vertical video discovery in the FYP lobby through AI contextual booking, secure document verification, and group management.
 
 <p align="center">
   <img src="assets/user_flow_diagram.svg" alt="2.2.2 User Flow Diagram" width="850" />
@@ -94,7 +96,7 @@ flowchart TD
 
 | Date | Mentor | Feedback Received | What Was Changed |
 | :--- | :--- | :--- | :--- |
-| **8/9/2026** | **Faris Imran** | <ul><li>Add more social aspect for the usage of the app for easier communications between traveller</li><li>Nail down the scalability of the app</li><li>Make sure the main focus of the app still align with the problem statement</li></ul> | A community system was created as a way for people to create a travel plan together with unfamiliar faces for the sake of travelling benefits. |
+| **8/9/2026** | **Faris Imran** | <ul><li>Make the app become more social friendly.</li><li>Nail down the scalability of the app.</li><li>Make sure the main focus of the app still align with the problem statement.</li></ul> | <ul><li>Multiple features added in group chats to aid user plan travels rather than just acts as a way for communication like voting system and split payment.</li><li>A community system was created as a way for people to create a travel plan together with an unfamiliar faces for the sake of travelling benefits.</li></ul> |
 
 ---
 
