@@ -64,6 +64,32 @@ graph BT
 #### 2.2.2 User Flow Diagram
 This diagram maps the user's journey from vertical video discovery in the FYP lobby through AI contextual booking, secure document verification, and group expense management.
 
+<p align="center">
+  <img src="assets/user_flow_diagram.svg" alt="2.2.2 User Flow Diagram" width="850" />
+</p>
+
+<details open>
+<summary><b>Mermaid Flowchart View</b></summary>
+
+```mermaid
+flowchart TD
+    Start(["Start"]) --> Scroll["User scrolls feed"]
+    Scroll --> RecPlaces["AI-recommendation places displayed"]
+    RecPlaces --> TapContextual["User tap AI-Contextual View"]
+    TapContextual --> DetailsDisp["Travel time, optimal visiting time,<br/>hotel recommendation displayed"]
+    DetailsDisp --> Decision{"User wants<br/>to book?"}
+    
+    Decision -- No --> Scroll
+    Decision -- Yes --> InputBooking["User input dates and amount of people"]
+    
+    InputBooking --> InputDocs["User proceeds and input necessary documentations"]
+    InputDocs --> BookingConfirmed["Booking confirmed"]
+    BookingConfirmed --> ViewDetails["User views bookings detail"]
+    ViewDetails --> EndNode(["End"])
+```
+
+</details>
+
 ### 2.3 Mentor Consultation
 
 | Date | Mentor | Feedback Received | What Was Changed |
