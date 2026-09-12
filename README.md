@@ -21,6 +21,46 @@ A continuous, video-native group travel planning mobile application that bridges
 #### 2.2.1 Problem Tree Graphs
 This tree breaks down the core causes of travel planning friction—such as unstructured social media content and fragmented communication—and traces their downstream impacts on trip abandonment and budget overruns.
 
+<p align="center">
+  <img src="assets/problem_tree_graph.svg" alt="2.2.1 Problem Tree Graphs" width="900" />
+</p>
+
+<details open>
+<summary><b>Mermaid Diagram View</b></summary>
+
+```mermaid
+graph BT
+    subgraph Problem ["Problem (Root Friction Drivers)"]
+        direction TB
+        P1["Social media doesn't properly<br/>display geo-data and pricing"]
+        P2["Group plans stall due to<br/>tedious booking steps"]
+        P3["Shared cost and budget limit<br/>needs to be tracked manually"]
+        P4["Travel discussion without proper<br/>knowledge and well-crafted plan"]
+    end
+
+    subgraph Causes ["Causes (Core Bottleneck)"]
+        C1["<b>Friction-Heavy Group Travel Planning</b>"]
+    end
+
+    subgraph Effects ["Effects (Downstream Impact)"]
+        direction TB
+        E1["Lose track of total spend<br/>without budget tracking"]
+        E2["Passport / ID details and budget tracking<br/>are scattered across multiple apps"]
+        E3["Manually sharing sensitive IDs<br/>across unsecure WhatsApp chats"]
+    end
+
+    P1 --> C1
+    P2 --> C1
+    P3 --> C1
+    P4 --> C1
+
+    C1 --> E1
+    C1 --> E2
+    C1 --> E3
+```
+
+</details>
+
 #### 2.2.2 User Flow Diagram
 This diagram maps the user's journey from vertical video discovery in the FYP lobby through AI contextual booking, secure document verification, and group expense management.
 
