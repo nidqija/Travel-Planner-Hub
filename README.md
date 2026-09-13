@@ -138,6 +138,140 @@ The initial cohort is group and student travelers, but the architecture scales i
 
 ---
 
+## 5. Feasibility
+
+### 5.1 Technical Viability and Technology Stack
+
+The proposed solution is technically feasible within the hackathon environment because it uses established technologies, managed cloud services, and existing APIs rather than requiring the team to develop complex infrastructure or AI models from scratch.
+
+The current application is a UI prototype/mock-up that demonstrates the intended user experience and overall travel-planning workflow. During the hackathon build phase, the team will connect this existing interface to the backend, database, AI services, and external APIs to transform the prototype into a functional system.
+
+#### Proposed Technology Stack
+
+| Component | Technology / Service | Why It Is Chosen | Expected Constraint |
+| :--- | :--- | :--- | :--- |
+| **Frontend** | **Flutter** | Provides a single codebase for rapid development of the mobile application and is suitable for the existing TikTok-style discovery interface. | Limited time for advanced animations and UI polishing. |
+| **Backend & Database** | **Supabase** | Provides PostgreSQL database services together with authentication, storage, real-time capabilities, and Edge Functions in one platform. Direct Flutter support reduces integration effort. | Free/limited resources and API usage may become a constraint as usage increases. |
+| **AI Service** | **Google Gemini API** | Used for travel recommendations, budget estimation, contextual reasoning, and document-assistance workflows without training a new model from scratch. | API rate limits, response latency, and variability of AI-generated outputs. |
+| **Location / Business Data** | **Google Maps Platform – Places API** | Provides place search and place details that can support destination and business recommendations, including current place information where available. | API quotas, billing requirements, and incomplete data coverage for some locations. |
+| **Travel / Routing Data** | **Google Maps Platform – Routes / Location Services** | Used to support travel-time and route-related information required by the planning workflow. | External API availability, quota, and response latency. |
+| **Server-side Integration** | **Supabase Edge Functions** | Acts as the secure server-side layer for AI and external API requests so sensitive service credentials are not directly exposed in the Flutter application. | Additional implementation effort for server-side functions and API error handling. |
+| **Hosting / Deployment** | **Supabase Cloud & Flutter Android APK** | Minimizes infrastructure and deployment complexity while allowing the team to demonstrate the application directly on an Android device/emulator. | Cloud service limits and dependency on internet connectivity during demonstrations. |
+
+- **Flutter** supports multi-platform application development from a single codebase, making it appropriate for rapid hackathon development.
+- **Supabase** provides a managed PostgreSQL database together with authentication, storage, realtime capabilities, and Edge Functions, while its official Flutter library allows the application to communicate directly with Supabase services.
+- The **Gemini API** provides content-generation capabilities that can be integrated into the application for recommendation and reasoning tasks rather than requiring the team to train its own AI model.
+- **Google Places API** provides place search, place details, and related location information that can support the application's destination and business discovery functions.
+
+```
+Flutter Frontend ──► Supabase Backend ──► Supabase Edge Functions ──► Gemini API / Google Maps APIs
+```
+
+The database component will store user preferences, saved destinations, playlists, and other trip-related information. Edge Functions provide the server-side layer for processing requests and communicating with external services.
+
+> [!IMPORTANT]
+> **API Key Security & Integrity**: External API credentials should not be unnecessarily exposed inside the mobile application. Server-side Edge Functions act as the controlled integration point for services such as Gemini and Google Maps, adhering to Supabase's recommended security best practices of protecting production credentials rather than committing sensitive keys into application client code.
+
+---
+
+### 5.2 Planning and Scope Realism
+
+We have intentionally separated the overall product vision from the hackathon implementation scope. The current application is a mock-up/prototype that demonstrates the intended interface and user journey. The build phase will focus on implementing the underlying functionality behind the existing interface instead of rebuilding the entire application from the beginning.
+
+#### Version 1.0 Core Modules
+The project's Version 1.0 scope is focused on four core modules:
+1. **Discovery Feed**: Destination discovery, contextual recommendations, estimated travel or arrival information, and suggested visiting periods.
+2. **Expense Engine**: AI-assisted travel budget and destination expense estimation.
+3. **Custom Playlists**: Saving and organizing destinations users are interested in visiting.
+4. **Document Automation**: AI-assisted completion of mandatory travel information and forms.
+
+#### Hackathon Implementation Scope
+
+```mermaid
+flowchart LR
+    A["Existing Prototype"] --> B["Connect Database"]
+    B --> C["Connect AI"]
+    C --> D["Connect External APIs"]
+    D --> E["Integrate Core Workflow"]
+    E --> F["Test"]
+    F --> G["Demonstrate"]
+```
+
+The broader product concept includes group planning, social interaction, budgeting, and community functionality. These remain part of the long-term product vision, but they are not dependencies for completing the core hackathon prototype. We are not attempting to reproduce every function of a commercial travel platform within the available build period; instead, the team will demonstrate a focused end-to-end workflow using the most critical features.
+
+Mentor consultation further reinforced this direction—emphasizing social usefulness, scalability, and continued alignment with the problem statement, which led to additional group-oriented and community concepts for the long-term roadmap.
+
+---
+
+### 5.3 Resource and Time Awareness
+
+The project is designed around resources that are practical for a small hackathon team. Because the UI prototype has already been prepared, we do not need to spend the entire build phase creating the frontend from scratch. Development effort can instead be concentrated on backend integration, AI functionality, external APIs, database connectivity, and testing.
+
+#### 6-Phase Build Plan
+
+| Phase | Milestone | Key Deliverables |
+| :--- | :--- | :--- |
+| **Phase 1** | **Backend & Data Foundation** | <ul><li>Configure Supabase project</li><li>Create database tables and relationships</li><li>Connect Flutter to Supabase</li><li>Define required user and destination data structures</li></ul> |
+| **Phase 2** | **AI Integration** | <ul><li>Integrate Gemini API through Supabase Edge Functions</li><li>Implement travel recommendation logic</li><li>Implement budget estimation</li><li>Test and validate AI responses</li></ul> |
+| **Phase 3** | **External Data Integration** | <ul><li>Integrate Google Places and location services</li><li>Retrieve destination/business information</li><li>Implement business-status checks where applicable</li><li>Handle API failures and unavailable data</li></ul> |
+| **Phase 4** | **Document Automation** | <ul><li>Implement AI-assisted travel form/document autofill</li><li>Connect the functionality to the existing prototype interface</li></ul> |
+| **Phase 5** | **End-to-End Integration** | <ul><li>Replace placeholder/mock data with functional data</li><li>Connect the four core modules</li><li>Verify that information flows correctly between frontend, backend, and external services</li></ul> |
+| **Phase 6** | **Testing & Demonstration** | <ul><li>Test the primary user journey</li><li>Handle AI/API failure cases</li><li>Fix high-priority bugs</li><li>Prepare the final demonstration</li></ul> |
+
+#### Risk Management & Technical Constraints
+Known technical constraints—including API rate limits, external-service availability, AI response latency, and limited hackathon development time—are mitigated by prioritizing the core workflow and keeping non-essential features outside the critical path.
+
+**Minimum Demonstrable Journey:**
+```mermaid
+flowchart LR
+    D["1. Discover"] --> E["2. Evaluate"]
+    E --> S["3. Save"]
+    S --> B["4. Calculate Budget"]
+    B --> P["5. Prepare Travel Requirements"]
+```
+
+---
+
+### 5.4 System Architecture
+
+The proposed system architecture establishes a decoupled, secure data flow between the client application, backend services, and external APIs:
+
+```mermaid
+graph TD
+    Client["<b>Flutter Mobile Application</b><br/>(Discovery UI, Playlists, Expense UI, Docs)"]
+    
+    subgraph Supabase ["Supabase Backend Infrastructure"]
+        DB[("PostgreSQL Database<br/>(User Prefs, Playlists, Trip Data)")]
+        Auth["Authentication / User Data"]
+        Storage["Storage Engine"]
+        Edge["Supabase Edge Functions<br/>(Secure Server-Side Gateway)"]
+    end
+    
+    subgraph External ["External Services & APIs"]
+        Gemini["Google Gemini API<br/>(Recommendations, Budget, Doc Autofill)"]
+        Places["Google Maps Places API<br/>(Destination & Business Details)"]
+        Routes["Google Maps Routes Services<br/>(Travel Time & Routing)"]
+    end
+    
+    Client <-->|Direct Client SDK / Realtime| DB
+    Client <-->|Auth & Media Upload| Auth
+    Client <-->|Document Assets| Storage
+    Client <-->|Secure Invocations| Edge
+    
+    Edge <-->|Contextual Prompts| Gemini
+    Edge <-->|Place Search & Details| Places
+    Edge <-->|Distance & Directions| Routes
+```
+
+#### Architectural Highlights & Feasibility Summary
+- **Decoupled Security**: The frontend communicates with Supabase, while external AI and service APIs are accessed through the Edge Function server-side layer, safeguarding API secrets.
+- **Cross-Platform Velocity**: Uses an established cross-platform framework (Flutter), a managed backend/database platform (Supabase), existing AI services (Gemini API), and external location APIs (Google Maps Platform). This eliminates the burden of building complex custom infrastructure or training models from scratch.
+- **Controlled Scope**: The hackathon implementation focuses on four core modules and one primary end-to-end workflow. Advanced community, social, and group-planning functions remain part of the broader product vision without blocking the core prototype demonstration.
+
+Therefore, the project provides a realistic, dependable path from the current mock-up to a fully functional prototype while maintaining rich technical depth.
+
+---
+
 ## Getting Started
 
 This project is built using Flutter.
